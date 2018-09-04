@@ -4,7 +4,7 @@ public class Paciente {
 	static String baixopesomuitograve = "Baixo peso muito grave";
 	static String baixopesograve = "Baixo peso grave";
 	static String baixopeso = "Baixo peso";
-	static String pesonormal = "Baixo peso muito grave";
+	static String pesonormal = "Peso normal";
 	static String sobrepeso = "Sobrepeso";
 	static String obesidadegrauI = "Obesidade grau I";
 	static String obesidadegrauII = "Obesidade grau II";
@@ -35,7 +35,7 @@ public class Paciente {
 			return baixopesograve;
 		} else if (calculaIMC() >= 17.0 && calculaIMC() <= 18.49) {
 			return baixopeso;
-		} else if (calculaIMC() >= 18.5 && calculaIMC() <= 24.49 ) {
+		} else if (calculaIMC() >= 18.5 && calculaIMC() <= 24.99 ) {
 			return pesonormal;
 		} else if (calculaIMC() >= 25.0 && calculaIMC() <= 29.99) {
 			return sobrepeso;
