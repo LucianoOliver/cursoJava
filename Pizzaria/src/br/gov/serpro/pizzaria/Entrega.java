@@ -14,9 +14,9 @@ public class Entrega {
 
 
 	public Double calculaValorEntrega() {
-		if (diaSemana.equals("Domingo") && distancia.doubleValue() > 50) {
+		if ((diaSemana.toLowerCase().equals("domingo") || diaSemana.toLowerCase().equals("sabado")) && distancia.doubleValue() > 50) {
 			return 20.00;
-		}else if (diaSemana.equals("Domingo") && distancia.doubleValue() < 50) {
+		}else if ((diaSemana.toLowerCase().equals("domingo") || diaSemana.toLowerCase().equals("sabado")) && distancia.doubleValue() < 50) {
 			return  15.00;
 		}
 		return preco = 10.0;

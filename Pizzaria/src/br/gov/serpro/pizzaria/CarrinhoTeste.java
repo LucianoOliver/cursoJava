@@ -1,21 +1,22 @@
 package br.gov.serpro.pizzaria;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 
-import org.junit.Assert;
-import org.junit.Test;
 
 
 class CarrinhoTeste {
 		
 		@Test
-		void testaValorCarrinho() {
+		void calculaPrecoTotal() {
 			Pizza mussarela = new Pizza("Mussarela");
 			Entrega entrega = new Entrega("Domingo", 30);
 			Carrinho carrinho = new Carrinho(mussarela, entrega);
-			
-			Assert.assertEquals(50.00, carrinho.calculaPrecoTotal());
-			
+			System.out.println(carrinho.calculaPrecoTotal());
+			Double valorEsperado = new Double(45.0);
+			assertEquals(valorEsperado, carrinho.calculaPrecoTotal());
 			
 		}
 
