@@ -4,11 +4,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-<<<<<<< HEAD
-		Moeda moeda1 = new Moeda(0.22);
-=======
 		Moeda moeda1 = new Moeda(0.21);
->>>>>>> 068b3de4f5048fec3d9eb22b1b239c6134dcaf88
 		Cofrinho cofrinho = new Cofrinho();
 		
 		Moeda moeda2 = new Moeda(0.10);
