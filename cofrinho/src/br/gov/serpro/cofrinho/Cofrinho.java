@@ -1,52 +1,53 @@
 package br.gov.serpro.cofrinho;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cofrinho {
 
-	private String dono;
-	private double moedaUmcentavo;
-	private double moedaCincocentavo;
-	private double moedaDezCentavo;
-	private double moedaVinteCincoCentavos;
-	private double moedaCinquentaCentavos;
-	private double moedaUmreal;
+	List<Moeda> moedasDepositadas = new ArrayList<>();
 
-	// Constructor
-	public Cofrinho(String d) {
-		dono = d;
-		moedaUmcentavo = 0.1;
-		moedaCincocentavo = 0.5;
-		moedaDezCentavo = 0.10;
-		moedaVinteCincoCentavos = 0.25;
-		moedaCinquentaCentavos = 0.50;
-		moedaUmreal = 1.00;
+	void adicionarMoeda(Moeda moeda1) {
+
+		moedasDepositadas.add(moeda1);
 	}
 
-	// Métodos
-	public void setDono(String d) {
-		this.dono = d;
+	double calcularTotalDepositado() {
+		double totalDepositado = 0;
+		for (int i = 0; i < moedasDepositadas.size(); i++) {
+			Moeda moedaLida = moedasDepositadas.get(i);
+			totalDepositado = totalDepositado + moedaLida.valor;
+		}
+		return totalDepositado;
 	}
 
-	public String getDono() {
-		return this.dono;
+	int contarMoedaDepositada() {
+		int numeroMoedaDepositada = moedasDepositadas.size();
+		return numeroMoedaDepositada;
 	}
 
-	public void depositaUmaMoedaUmCentavo() {
-		this.moedaUmcentavo = this.moedaUmcentavo + moedaUmcentavo;
+	int contarMoedaPorValor(double valor) {
+		int numeroMoedaDoValor = 0;
+		for (int i = 0; i < moedasDepositadas.size(); i++) {
+			Moeda moedaLida = moedasDepositadas.get(i);
+			if (moedaLida.valor == valor) {
+				numeroMoedaDoValor = numeroMoedaDoValor + 1;
+			}
+		}
+		return numeroMoedaDoValor;
 	}
 
-	public void depositaUmaMoedaCinco() {
-		this.moedaCincocentavo = this.moedaCincocentavo + moedaCincocentavo;
+	double identificarMoedaMaiorValor() {
+		double maiorValor = 0;
+		for (int i = 0; i < moedasDepositadas.size(); i++) {
+			Moeda moedaLida = moedasDepositadas.get(i);
+			if (moedaLida.valor > maiorValor) {
+				maiorValor = moedaLida.valor;
+			}
+			//maiorValor = moedaLida.valor;
+
+		}
+		return maiorValor;
 	}
 
-	public void depositaUmaMoedaDezCentavos() {
-		this.moedaDezCentavo = this.moedaDezCentavo + moedaDezCentavo;
-	}
-
-	public double total() {
-		return ((moedaUmcentavo + moedaCincocentavo + moedaDezCentavo) / 100);
-	}
-
-	public double total(double valorDolar) {
-		return (((moedaUmcentavo + moedaCincocentavo + moedaDezCentavo) / 100) / valorDolar);
-	}
 }
