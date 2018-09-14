@@ -4,7 +4,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		Moeda moeda1 = new Moeda(0.25);
+		Moeda moeda1 = new Moeda(0.50);
 		Cofrinho cofrinho = new Cofrinho();
 		
 		Moeda moeda2 = new Moeda(0.10);
