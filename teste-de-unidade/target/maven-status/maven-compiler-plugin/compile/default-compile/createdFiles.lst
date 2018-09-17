@@ -1,0 +1,9 @@
+br/com/caelum/leilao/servico/EncerradorDeLeilao.class
+br/com/caelum/leilao/infra/dao/LeilaoDao.class
+br/com/caelum/leilao/dominio/Pagamento.class
+br/com/caelum/leilao/servico/Avaliador.class
+br/com/caelum/leilao/dominio/Leilao.class
+br/com/caelum/leilao/dominio/Usuario.class
+br/com/caelum/leilao/infra/dao/LeilaoDaoFalso.class
+br/com/caelum/leilao/servico/Avaliador$1.class
+br/com/caelum/leilao/dominio/Lance.class

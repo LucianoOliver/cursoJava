@@ -1,0 +1,4 @@
+br/com/caelum/leilao/servico/AvaliadorTest.class
+br/com/caelum/leilao/servico/EncerradorDeLeilaoTest.class
+br/com/caelum/leilao/dominio/LeilaoTest.class
+br/com/caelum/leilao/builder/CriadorDeLeilao.class
