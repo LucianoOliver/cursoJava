@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.CofreRefatorado2ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 10.28 s <<< FAILURE! - in com.example.demo.CofreRefatorado2ApplicationTests
+contextLoads2(com.example.demo.CofreRefatorado2ApplicationTests)  Time elapsed: 0.077 s  <<< ERROR!
+java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker
+Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/dynamic/loading/ClassLoadingStrategy
+Caused by: java.lang.ClassNotFoundException: net.bytebuddy.dynamic.loading.ClassLoadingStrategy
+
+contextLoads2(com.example.demo.CofreRefatorado2ApplicationTests)  Time elapsed: 0.077 s  <<< ERROR!
+java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker
+Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/dynamic/loading/ClassLoadingStrategy
+Caused by: java.lang.ClassNotFoundException: net.bytebuddy.dynamic.loading.ClassLoadingStrategy
+
+contextLoads(com.example.demo.CofreRefatorado2ApplicationTests)  Time elapsed: 0.025 s  <<< ERROR!
+java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker
+Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/dynamic/loading/ClassLoadingStrategy
+Caused by: java.lang.ClassNotFoundException: net.bytebuddy.dynamic.loading.ClassLoadingStrategy
+
+contextLoads(com.example.demo.CofreRefatorado2ApplicationTests)  Time elapsed: 0.025 s  <<< ERROR!
+java.lang.IllegalStateException: Could not initialize plugin: interface org.mockito.plugins.MockMaker
+Caused by: java.lang.NoClassDefFoundError: net/bytebuddy/dynamic/loading/ClassLoadingStrategy
+Caused by: java.lang.ClassNotFoundException: net.bytebuddy.dynamic.loading.ClassLoadingStrategy
+
