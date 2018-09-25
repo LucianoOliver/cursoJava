@@ -13,6 +13,14 @@ public class Item {
 	public int getPeso() {
 		return pesoEntrega;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	
 	
 
