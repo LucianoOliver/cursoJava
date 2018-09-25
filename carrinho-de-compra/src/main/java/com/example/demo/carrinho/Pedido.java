@@ -23,7 +23,7 @@ public class Pedido {
 	}
 	
 	public double calculaTotal() {
-		return 0;
+		return item.getPrecoPelaQuantidade() * item.getQuantidade() ;
 	
 	}
 	

@@ -4,6 +4,7 @@ public class Item {
 	
 	private int pesoEntrega;
 	private String descricao;
+	private int quantidade;
 	
 	
 	public int getPrecoPelaQuantidade() {
@@ -20,6 +21,14 @@ public class Item {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 	
 	
