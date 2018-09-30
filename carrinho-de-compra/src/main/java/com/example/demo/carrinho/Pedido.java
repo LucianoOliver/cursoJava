@@ -8,12 +8,12 @@ public class Pedido {
 	
 	private Integer numero;
 	private LocalDate data; 
-	private String status;
+	private SituacaoPedido status;
 	private Cliente cliente;
 	private Item item;
-	private List<Item> itens = new ArrayList<>();
+	private List<DetalhePedido> detalhePedidos = new ArrayList<>();
 	
-	public Pedido(Integer numero, LocalDate data, String status, Cliente cliente, DetalhePedido detalhePedido) {
+	public Pedido(Integer numero, LocalDate data, SituacaoPedido status, Cliente cliente) {
 		super();
 		this.data = data;
 		this.status = status;
@@ -21,15 +21,15 @@ public class Pedido {
 		this.numero = numero;
 	}
 	
-	public void adicionarItem(Item item) {
-		itens.add(item);
+	public void adicionarDetalhePedido(DetalhePedido detalhePedido) {
+		detalhePedidos.add(detalhePedido);
 	}
 
 	public double calculaTaxa() {
 		double valorTaxa = 0;
 
-		for (Item item : itens) {
-			valorTaxa += item.getPreco() * 0.10;
+		for (DetalhePedido detalhePedido : detalhePedidos) {
+			valorTaxa += detalhePedido.calculaSubTotal() * 0.10;
 		}
 
 		return valorTaxa;
@@ -40,8 +40,8 @@ public class Pedido {
 	public double calculaValorTotal() {
 		double valorTotal = 0;
 
-		for (Item item : itens) {
-			valorTotal += item.getPreco() * item.getQuantidade();
+		for (DetalhePedido detalhePedido : detalhePedidos) {
+			valorTotal += detalhePedido.calculaSubTotal() * detalhePedido.getQuantidade();
 		}
 
 		return valorTotal;
@@ -52,8 +52,8 @@ public class Pedido {
 	public double calculaTotalPeso() {
 		double valorTotalPeso = 0;
 
-		for (Item item : itens) {
-			valorTotalPeso += item.getPeso();
+		for (DetalhePedido detalhePedido : detalhePedidos) {
+			valorTotalPeso += detalhePedido.calculaPeso();
 		}
 		return valorTotalPeso;
 	

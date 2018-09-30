@@ -4,97 +4,58 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class PedidoTest {
 
+	private Integer numeroPedido;
+	private LocalDate dataPedido;
+	private Item item;
+	private DetalhePedido detalhePedido;
+	private Cliente luciano;
+	private Pedido pedidoUm;
+
+	@Before
+	public void informacoesPedido() {
+		numeroPedido = 1;
+		dataPedido = LocalDate.now();
+		item = new Item(1, "Coca Lata", 5);
+		detalhePedido = new DetalhePedido(1, false, item);
+		luciano = new Cliente("Luciano", "Rua Um");
+		pedidoUm = new Pedido(numeroPedido, dataPedido, SituacaoPedido.EM_PRCESSAMENTO, luciano);
+
+	}
+
 	@Test
 	public void calculaTaxatest() {
-		
-		LocalDate dataPedido =  LocalDate.now();
-		Item item = new Item();
-		DetalhePedido detalhePedido = new DetalhePedido();
-		
-		
-		item.setDescricao("Celular");
-		item.setQuantidade(1);
-		item.setPreco(5);
-		Cliente luciano = new Cliente("Luciano", "Rua Um");
-		Integer numeroPedido = 1;
-		Pedido pedidoUm = new Pedido(numeroPedido, dataPedido, "Em processamento", luciano, detalhePedido);
-		
-		//detalhePedido.calculaPeso();
-		//detalhePedido.calculaSubTotal();
-		pedidoUm.adicionarItem(item);
+		pedidoUm.adicionarDetalhePedido(detalhePedido);
 		double calculaTaxa = pedidoUm.calculaTaxa();
 		double resultadoEsperado = 0.5;
-		
+
 		assertEquals(resultadoEsperado, calculaTaxa, 0);
-		
-		
-		
+
 	}
-	
-	
+
 	@Test
 	public void calculaValorTotaltest() {
-		
-		LocalDate dataPedido =  LocalDate.now();
-		Item item = new Item();
-		DetalhePedido detalhePedido = new DetalhePedido();
-		
-		
-		item.setDescricao("Celular");
-		item.setQuantidade(2);
-		item.setPreco(5);
-		Cliente luciano = new Cliente("Luciano", "Rua Um");
-		Integer numeroPedido = 1;
-		Pedido pedidoUm = new Pedido(numeroPedido, dataPedido, "Em processamento", luciano, detalhePedido);
-		
-		
-		pedidoUm.adicionarItem(item);
+		pedidoUm.adicionarDetalhePedido(detalhePedido);
 		double valorTotal = pedidoUm.calculaValorTotal();
-		double resultadoEsperado = 10;
-		
+		double resultadoEsperado = 5;
+
 		assertEquals(resultadoEsperado, valorTotal, 0);
-		
-		
-		
+
 	}
-	
+
 	@Test
 	public void calculaTotalPesotest() {
-		
-		LocalDate dataPedido =  LocalDate.now();
-		Item celular = new Item();
-		DetalhePedido detalhePedido = new DetalhePedido();
-		
-		celular.setDescricao("Celular");
-		celular.setQuantidade(2);
-		celular.setPreco(5);
-		celular.setPeso(10);
-		
-		Item tablet = new Item();
-		
-		tablet.setDescricao("Celular");
-		tablet.setQuantidade(2);
-		tablet.setPreco(5);
-		tablet.setPeso(10);
-		
-		Cliente luciano = new Cliente("Luciano", "Rua Um");
-		Integer numeroPedido = 1;
-		Pedido pedidoUm = new Pedido(numeroPedido, dataPedido, "Em processamento", luciano, detalhePedido);
-		
-		pedidoUm.adicionarItem(celular);
-		pedidoUm.adicionarItem(tablet);
+
+		pedidoUm.adicionarDetalhePedido(detalhePedido);
 		double totalPeso = pedidoUm.calculaTotalPeso();
-		double resultadoEsperado = 20;
-		
+		double resultadoEsperado = 1;
+
 		assertEquals(resultadoEsperado, totalPeso, 0);
-		
+
 	}
-	
-	
-	
 
 }

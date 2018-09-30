@@ -3,22 +3,36 @@ package com.example.demo.carrinho;
 public class DetalhePedido {
 	
 	private int quantidade;
-	private String totalImposto;
+	private Boolean statusImposto;
 	private Item item;
 
 	
+	public DetalhePedido(int quantidade, Boolean statusImposto, Item item) {
+		this.setQuantidade(quantidade);
+		this.statusImposto = statusImposto;
+		this.item = item;
+	}
+
 	public double calculaSubTotal(){
 		int subTotal = 0;
-		subTotal = item.getQuantidade() * item.getPrecoPelaQuantidade();
+		subTotal = getQuantidade() * item.getPrecoPelaQuantidade();
 		return subTotal;
 		
 	}
 	
 	public double calculaPeso(){
 		int subTotal = 0;
-		subTotal = item.getQuantidade() * item.getPeso();
+		subTotal = getQuantidade() * item.getPeso();
 		return subTotal;
 		
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 	
 }

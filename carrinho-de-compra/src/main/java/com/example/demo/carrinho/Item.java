@@ -4,10 +4,16 @@ public class Item {
 	
 	private int pesoEntrega;
 	private String descricao;
-	private int quantidade;
 	private int preco;
 	
 	
+	
+	public Item(int pesoEntrega, String descricao, int preco) {
+		this.pesoEntrega = pesoEntrega;
+		this.descricao = descricao;
+		this.preco = preco;
+	}
+
 	public int getPrecoPelaQuantidade() {
 		return preco;
 	}
@@ -22,14 +28,6 @@ public class Item {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public void setPreco(int preco) {
