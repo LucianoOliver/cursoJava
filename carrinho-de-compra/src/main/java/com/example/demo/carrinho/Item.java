@@ -22,28 +22,4 @@ public class Item {
 		return pesoEntrega;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public void setPreco(int preco) {
-		 this.preco = preco;
-		
-	}
-	
-	public int getPreco() {
-		return preco;
-	}
-
-	public void setPeso(int peso) {
-		this.pesoEntrega = peso;
-		
-	}
-	
-	
-
 }

@@ -1,6 +1,6 @@
 package com.example.demo.carrinho;
 
-public class Dinheiro {
+public class Dinheiro extends Pagamento {
 
 	private Double dinheiroOferecido;
 	
