@@ -1,6 +1,6 @@
 package com.example.demo.carrinho;
 
-public class Pagamento {
+public abstract class Pagamento {
 	
 	private int quantidade;
 
@@ -11,6 +11,9 @@ public class Pagamento {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	public abstract String  tipoPagamento();
+
 
 }
 

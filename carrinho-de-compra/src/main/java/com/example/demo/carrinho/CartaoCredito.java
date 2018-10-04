@@ -10,4 +10,11 @@ public class CartaoCredito extends Pagamento{
 		return false;
 		
 	}
+	
+	@Override
+	public String tipoPagamento() {
+		String tipo = "Cartão de Credito";
+		return tipo;
+	}
+
 }

@@ -12,7 +12,7 @@ public class Pedido {
 	private Cliente cliente;
 	private Item item;
 	private List<DetalhePedido> detalhePedidos = new ArrayList<>();
-	private Pagamento pagamento = new Pagamento();
+	private Pagamento pagamento;
 	public Pedido(Integer numero, LocalDate data, SituacaoPedido status, Cliente cliente) {
 		super();
 		this.data = data;
@@ -59,13 +59,9 @@ public class Pedido {
 	
 	}
 	
-	public double efetuarPagamento() {
-		double valorTotalPeso = 0;
+	public String efetuarPagamento(Pagamento pagamento) {
 		
-		for (DetalhePedido detalhePedido : detalhePedidos) {
-			valorTotalPeso += detalhePedido.calculaPeso();
-		}
-		return valorTotalPeso;
+		return pagamento.tipoPagamento();
 	
 	}
 	
