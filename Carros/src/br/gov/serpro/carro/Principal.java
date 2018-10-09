@@ -4,19 +4,19 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		Carro corcel = new Carro("corcel", 10, 100);		
+		CarroDeCorrida corcel = new CarroSoma("corcel", 10, 100);		
 		corcel.acelerar();
 		corcel.frear();
 		corcel.imprimir();
 		
-		Carro etios = new Carro("etios", 10, 120);
+		CarroDeCorrida etios = new CarroSoma("etios", 10, 120);
 
 		etios.acelerar();
 		etios.frear();
 		etios.frear();
 		etios.imprimir();
 		
-		Carro corolla =new Carro("corolla", 10, 80);
+		CarroDeCorrida corolla =new CarroSoma("corolla", 10, 80);
 
 		corolla.acelerar();
 		corolla.imprimir();
