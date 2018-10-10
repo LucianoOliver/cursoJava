@@ -1,0 +1,72 @@
+@startuml   
+
+package pergunta11 {
+
+    package ij {
+        class I <<final>> {
+            + publish()
+        }
+
+        class J {
+            + publish()
+        }
+
+        I <|-- J
+    }
+
+    package gh {
+
+        class G <<package private>> {
+            ~ publicaMensagem()
+        }
+
+        package gh1 {
+            class H <<package private>> {
+                + publicaMensagem()
+            }
+        }
+
+        G <|-- H
+
+    }
+
+    package ef {
+
+        class E {
+            # formatarString()
+        }
+
+        class F {
+            + formatarString()
+        }
+
+        E <|-- F
+
+    }
+
+    package cd {
+        class C {
+            - metodo()
+        }
+
+        class D {
+            + metodo()
+        }
+
+        C <|-- D
+    }
+
+    package ab {
+        class A {
+            + fazerAlgo()
+        }
+
+        class B {
+            + fazerOutraCoisa()
+        }
+
+        A <|-- B
+    }
+}
+
+@enduml
