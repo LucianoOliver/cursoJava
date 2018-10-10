@@ -45,7 +45,7 @@ public class CarroTest {
 
 		etios.acelerar();
 		etios.frear();
-		int resultadoEsperado = 65;
+		int resultadoEsperado = 5;
 		assertEquals(resultadoEsperado, etios.getVelocidade());
 		
 		

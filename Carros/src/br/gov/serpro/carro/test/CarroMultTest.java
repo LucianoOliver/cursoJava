@@ -24,7 +24,7 @@ public class CarroMultTest {
 	public void AcelerarTest() {
 	
 		corcel.acelerar();
-		int resultadoEsperado = 0;
+		int resultadoEsperado = 10;
 		assertEquals(resultadoEsperado, corcel.getVelocidade());
 		
 		etios.acelerar();
@@ -47,7 +47,7 @@ public class CarroMultTest {
 
 		etios.acelerar();
 		etios.frear();
-		int resultadoEsperado = 0;
+		int resultadoEsperado = 5;
 		assertEquals(resultadoEsperado, etios.getVelocidade());
 		
 		
@@ -91,7 +91,7 @@ public class CarroMultTest {
 			corolla.acelerar();
 		}
 		
-		int resultadoEsperado = 0;
+		int resultadoEsperado = 80;
 		assertEquals(resultadoEsperado, corolla.getVelocidade());
 	}
 

@@ -12,6 +12,7 @@ public class CarroSomaTest {
 	CarroDeCorrida corcel;
 	CarroDeCorrida etios;
 	CarroDeCorrida corolla;
+	
 	@Before
 	public void inicializaCarro() {
 		corcel = new CarroSoma("corcel", 10, 100);

@@ -4,26 +4,14 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		CarroDeCorrida corcel = new CarroSoma("corcel", 10, 100);		
-		corcel.acelerar();
-		corcel.frear();
-		corcel.imprimir();
+		Corrida corridaDaAmizade = new Corrida(2000);
 		
-		CarroDeCorrida etios = new CarroSoma("etios", 10, 120);
-
-		etios.acelerar();
-		etios.frear();
-		etios.frear();
-		etios.imprimir();
+		corridaDaAmizade.adicionaCarro(new CarroSoma("CarroA", 10,110));
+		corridaDaAmizade.adicionaCarro(new CarroSoma("CarroB", 8,140));
+		corridaDaAmizade.adicionaCarro(new CarroSoma("CarroC", 1.7, 100));
+		corridaDaAmizade.adicionaCarro(new CarroSoma("CarroD", 1.4,110));
 		
-		CarroDeCorrida corolla =new CarroSoma("corolla", 10, 80);
-
-		corolla.acelerar();
-		corolla.imprimir();
-		corolla.frear();
-		corolla.imprimir();
-		corolla.acelerar();
-		corolla.imprimir();
+		corridaDaAmizade.umDoisTresJa();
 		
 		
 	}

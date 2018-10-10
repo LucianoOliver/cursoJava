@@ -1,9 +1,9 @@
 package br.gov.serpro.carro;
 
 public class CarroSoma extends CarroDeCorrida {
-	private int potencia;
+	private double potencia;
 	
-	public CarroSoma(String nome, int potencia, int velocidadeMaxima) {
+	public CarroSoma(String nome, double potencia, int velocidadeMaxima) {
 		super(nome, velocidadeMaxima);
 		this.potencia = potencia;
 	
@@ -11,7 +11,7 @@ public class CarroSoma extends CarroDeCorrida {
 
 	@Override
 	public void acelerar() {
-		velocidade = velocidade + potencia;
+		velocidade += potencia;
 		if(velocidade > velocidadeMaxima) {
 			velocidade =  velocidadeMaxima;
 		}

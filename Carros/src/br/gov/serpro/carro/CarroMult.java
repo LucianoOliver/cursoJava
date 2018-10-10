@@ -18,10 +18,17 @@ public class CarroMult extends CarroDeCorrida {
 
 	@Override
 	public void acelerar() {
-		velocidade *= potencia;
-		if(velocidade > velocidadeMaxima) {
-			velocidade =  velocidadeMaxima;
+		
+		if(velocidade == 0) {
+			velocidade = 10;
+		}else {
+			velocidade *= potencia;
+			if(velocidade > velocidadeMaxima) {
+				velocidade =  velocidadeMaxima;
+			}
+			
 		}
+		
 
 	}
 
