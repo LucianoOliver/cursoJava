@@ -1,0 +1,60 @@
+@startuml
+
+package exercicio {
+
+    class Navegavel {
+        + ancorar()
+        + atracar()
+        + navegar()
+        + bombordo()
+        + estibordo()
+    }
+
+    class Navio {
+        # nome
+        # registro
+        # capitao
+        # tripulação
+        # passageiros
+        + embarcar()
+        + desembarcar()
+    }
+
+    class NavioMilitar {
+        # nacionalidade
+        # marinheiros
+        # armas
+        + atirar()
+    }
+
+    class PortaAvioes {
+        # aeronaves
+        # pilotos
+        + autorizarVoo()
+        + autorizarPouso()
+    }
+
+    class Submarino {
+        # torpedos
+        + submergir()
+        + emergir()
+    }
+
+    class Cruzeiro {
+        # suites
+        # piscinas
+        # teatros
+        + ativarModoFesta()
+    }
+
+    Navegavel <|-- Navio
+
+    Navio <|-- NavioMilitar
+    Navio <|-- Cruzeiro
+
+    NavioMilitar <|-- PortaAvioes
+    NavioMilitar <|-- Submarino
+
+}
+
+@enduml

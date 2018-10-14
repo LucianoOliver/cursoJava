@@ -1,0 +1,25 @@
+@startuml
+
+package exercicio05 {
+    class Animal {
+        + andar()
+        + correr()
+    }
+
+    class Mamifero {
+        + mamar()
+    }
+
+    class Cachorro {
+        + latir()
+    }
+
+    class Gato {
+        + miar()
+    }
+
+    Animal <|-- Mamifero
+    Mamifero <|-- Cachorro
+    Mamifero <|-- Gato
+}
+@enduml
