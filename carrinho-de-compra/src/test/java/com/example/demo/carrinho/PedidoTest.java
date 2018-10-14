@@ -1,4 +1,4 @@
-package carrinho;
+package com.example.demo.carrinho;
 
 import static org.junit.Assert.assertEquals;
 
