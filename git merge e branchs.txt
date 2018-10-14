@@ -1,0 +1,78 @@
+ 1084  git tag -d iss53 
+ 1085  git log
+ 1086  git branch iss53
+ 1087  git status
+ 1088  git branch 
+ 1089  git checkout iss53 
+ 1090  git status 
+ 1091  gedit README.md 
+ 1092  git status
+ 1093  git checkout master 
+ 1094  git status
+ 1095  gedit README.md 
+ 1096  git status
+ 1097  git checkout iss53 
+ 1098  git status
+ 1099  git commit -m "Incluido a branch"
+ 1100  git status
+ 1101  git add .
+ 1102  git status
+ 1103  git commit -m "Incluido a branch"
+ 1104  git statusl
+ 1105  git status
+ 1106  git checkout master 
+ 1107  git status
+ 1108  git checkout iss53 
+ 1109  git status
+ 1110  git push 
+ 1111  git push --set-upstream origin iss53 
+ 1124  git checkout master 
+ 1148  git commit -m "agora sim subindo as alteracoes"
+ 1149  git push 
+ 1150  git checkout iss53 
+ 1151  gedit README.md 
+ 1152  git status
+ 1153  git add .
+ 1154  git status
+ 1155  git commit -m"alterado de novo no branch iss53"
+ 1156  git push
+ 1157  git status
+ 1158  git checkout master 
+ 1159  gedit README.md 
+ 1160  git status
+ 1161  git add .
+ 1162  git status
+ 1163  git commit -m"alterado a branch master"
+ 1164  git push
+ 1165  git status
+ 1166  git log
+ 1167  git status
+ 1168  git merge iss53 
+ 1169  code .
+ 1170  git status
+ 1171  git push 
+ 1172  git status
+ 1173  git merge iss53 
+ 1174  git status
+ 1175  git commit -m"alterado a branch master"
+ 1181  git branch iss53 
+ 1182  git status
+ 1183  git checkout iss53  
+ 1192  git branch 
+ 1193  git checkout master 
+ 1194  git branch -d iss53 
+ 1195  git branch 
+ 1204  git push origin iss53 --delete
+
+cria tag local
+git tag 1.0.9
+
+envia a tag criada para o ambiente remoto
+git push origin master --tags
+
+deleta tag localmente
+git tag -d 1.0.9
+
+deleta tag remota
+git push origin :refs/tags/1.0.9
+
