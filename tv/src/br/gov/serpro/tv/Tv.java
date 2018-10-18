@@ -14,6 +14,12 @@ public class Tv {
 		this.ligada = false;
 	}
 	
+	
+	
+	List<Integer> lista = Arrays.asList(a);
+
+    System.out.println("3 in a = " + (lista.contains(3)));
+	
 	public int mudarCanal(int canalMudado) {
 		//int tamanho = canais.length;
 		for(int canal : canais) {

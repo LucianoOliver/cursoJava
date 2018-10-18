@@ -18,7 +18,6 @@ public class ControleRemotoTest {
 		
 	}
 	
-	
 	@Test
 	public void testAumentarCanal() {
 		int[] canais = {1,3,5,6,8,9,10,11,12,13};
@@ -30,7 +29,6 @@ public class ControleRemotoTest {
 		int canalAumentado = controleRemoto.aumentarCanal();
 		assertEquals(6, canalAumentado);
 	}
-	
 	
 //	@Test
 //	public void testaumentarVolume() {
