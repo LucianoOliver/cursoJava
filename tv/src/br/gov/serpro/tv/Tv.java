@@ -19,7 +19,7 @@ public class Tv {
 		this.ligada = false;
 	}
 
-	public Boolean canalAtivo(int canalMudado) {
+	private Boolean canalAtivo(int canalMudado) {
 		// int tamanho = canais.length;
 		for (int canal : canais) {
 			if (canalMudado == canal) {
