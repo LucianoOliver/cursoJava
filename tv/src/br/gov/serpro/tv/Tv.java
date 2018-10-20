@@ -8,6 +8,7 @@ public class Tv {
 	private static final int ZERO = 0;
 	private static final int UM = 1;
 	private static final int VOLUME_MAXIMO = 50;
+	private static final int VOLUME_MINIMO = 0;
 	private int volume;
 	private Boolean ligada = false;
 	private int canalAtivo = 0;
@@ -20,74 +21,68 @@ public class Tv {
 	}
 
 	private Boolean canalAtivo(int canalMudado) {
-		// int tamanho = canais.length;
-		for (int canal : canais) {
-			if (canalMudado == canal) {
-				return true;
+		int tamanho = canais.length;
+		for (int i = 0; i < canais.length; i++) {
+			if (canais[i] == canalMudado) {
+				if (i < canais.length && canais[i] > ZERO) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 
 	public int mudarCanal(int canalMudado) {
-		// int tamanho = canais.length;
 		if (canalAtivo(canalMudado)) {
 			return canalAtivo = canalMudado;
 		} else {
-			return canalAtivo = 0;
+			return canalAtivo;
 		}
 
 	}
 
 	public int aumentarCanal() {
-
+		int canalRetornado = canalAtivo;
 		for (int canal : canais) {
-			if (canalAtivo(canalAtivo + UM)) {
-				return canalAtivo + UM;
-			} else {
-				canalAtivo = canalAtivo + UM;
-			}
-
+			canalRetornado = canalRetornado + UM;
+			if (canalAtivo(canalRetornado))
+				return canalRetornado;
 		}
 		return canalAtivo;
 	}
-	
+
 	public int diminuirCanal() {
-
+		int canalRetornado = canalAtivo;
 		for (int canal : canais) {
-			if (canalAtivo(canalAtivo - UM)) {
-				return canalAtivo - UM;
-			} else {
-				canalAtivo = canalAtivo - UM;
-			}
-
+			canalRetornado = canalRetornado - UM;
+			if (canalAtivo(canalRetornado))
+				return canalRetornado;
 		}
 		return canalAtivo;
 	}
 
 	public int aumentarVolume() {
 
-		if (volume <= VOLUME_MAXIMO) {
+		if (volume < VOLUME_MAXIMO) {
 			this.volume = volume + UM;
-
 		}
 		return volume;
 	}
 
 	public int baixarVolume() {
-		if (volume >= ZERO) {
+		if (volume > VOLUME_MINIMO) {
 			this.volume = volume - UM;
 
 		}
 		return volume;
 	}
 
-	public Boolean ligada() {
+	public Boolean ligar() {
 		return ligada = true;
 
 	}
-	
-	public Boolean desligada() {
+
+	public Boolean desligar() {
 		return ligada = false;
 
 	}

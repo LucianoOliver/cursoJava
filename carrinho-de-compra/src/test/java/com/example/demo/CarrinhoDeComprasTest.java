@@ -1,8 +1,11 @@
-package com.example.demo.carrinho;
+package com.example.demo;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.example.demo.carrinho.CarrinhoDeCompras;
+import com.example.demo.carrinho.Produto;
 
 public class CarrinhoDeComprasTest {
 
