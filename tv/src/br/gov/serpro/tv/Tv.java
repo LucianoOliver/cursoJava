@@ -1,8 +1,5 @@
 package br.gov.serpro.tv;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Tv {
 
 	private static final int ZERO = 0;
@@ -21,7 +18,6 @@ public class Tv {
 	}
 
 	private Boolean canalAtivo(int canalMudado) {
-		int tamanho = canais.length;
 		for (int i = 0; i < canais.length; i++) {
 			if (canais[i] == canalMudado) {
 				if (i < canais.length && canais[i] > ZERO) {
@@ -62,7 +58,6 @@ public class Tv {
 	}
 
 	public int aumentarVolume() {
-
 		if (volume < VOLUME_MAXIMO) {
 			this.volume = volume + UM;
 		}
