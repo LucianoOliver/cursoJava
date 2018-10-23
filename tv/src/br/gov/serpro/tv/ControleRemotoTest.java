@@ -156,24 +156,6 @@ public class ControleRemotoTest {
 		assertEquals(false, controleRemoto.desligar());
 		
 	}
-	
-	
-	@Test
-	public void testLigarTablet() {
-		int[] canais = {1,3,5,6,7,8,9,10,11,12,13};
-		
-		Tablet tablet = new Tablet();
-		ControleRemoto controleRemoto = new ControleRemoto(tablet);
-		
-		int volume = controleRemoto.baixarVolume();
-		assertEquals(true, controleRemoto.ligar());
-		
-	}
-	
-	
-	
-	
-	
 
 
 }

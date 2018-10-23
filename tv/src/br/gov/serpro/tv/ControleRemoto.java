@@ -4,7 +4,7 @@ public class ControleRemoto {
 
 	private Tv tv;
 
-	public ControleRemoto(Controlavel controlavel) {
+	public ControleRemoto(Tv tv) {
 		this.tv = tv;
 	}
 
