@@ -9,21 +9,20 @@ import java.util.List;
 public class Principal {
 
 	public static void main(String[] args) {
-		List<Jogadores> lista = new ArrayList<>();
-		lista.add(new Jogadores(15, "Corinthians", "Neto" ));
-		lista.add(new Jogadores(1, "santos", "Neymar" ));
-		lista.add(new Jogadores(10, "Flamengo", "Zico" ));
-		lista.add(new Jogadores(5, "SÃ£o paulo", "RaÃ­" ));
-		lista.add(new Jogadores(12, "Corinthians", "Tupanzinho" ));
-		
-		
+		List<Jogador> jogadores = new ArrayList<>();
+		jogadores.add(new Jogador(15, "Corinthians", "Neto" ));
+		jogadores.add(new Jogador(1, "santos", "Neymar" ));
+		jogadores.add(new Jogador(10, "Flamengo", "Zico" ));
+		jogadores.add(new Jogador(5, "São paulo", "Raí" ));
+		jogadores.add(new Jogador(12, "Corinthians", "Tupanzinho" ));
 	
-		//Collections.sort(lista);
+		Collections.sort(jogadores);
+		Collections.reverse(jogadores);
 		//Collections.reverseOrder(lista, new JogadoresComparator(15));
-		Collections.sort(lista, Comparator.comparing(Jogadores::getGols));
+		//Collections.sort(jogadores, Comparator.comparing(Jogador::getGols));
 
-		for (Jogadores jogadores : lista) {
-			System.out.println(jogadores);
+		for (Jogador jogador : jogadores) {
+			System.out.println(jogador);
 
 		}
 		

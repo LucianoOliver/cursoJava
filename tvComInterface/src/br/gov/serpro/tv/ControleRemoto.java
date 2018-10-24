@@ -1,6 +1,6 @@
 package br.gov.serpro.tv;
 
-public class ControleRemoto implements Controlavel {
+public class ControleRemoto {
 
 	private Tv tv;
 	private Som som;
@@ -13,18 +13,18 @@ public class ControleRemoto implements Controlavel {
 		
 	}
 
-//	public int mudarCanal(int canal) {
-//		//return controlavel.mudarCanal(canal);
-//
-//	}
-//
-//	public int aumentarCanal() {
-//		return tv.aumentarCanal();
-//	}
-//
-//	public int diminuirCanal() {
-//		return tv.diminuirCanal();
-//	}
+	public int mudarCanal(int canal) {
+		return controlavel.mudarCanal(canal);
+
+	}
+
+	public int aumentarCanal() {
+		return controlavel.aumentarCanal();
+	}
+
+	public int diminuirCanal() {
+		return controlavel.diminuirCanal();
+	}
 
 	public int aumentarVolume() {
 		return controlavel.aumentarVolume();

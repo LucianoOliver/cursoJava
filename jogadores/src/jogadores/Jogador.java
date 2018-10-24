@@ -2,14 +2,14 @@ package jogadores;
 
 import java.util.Comparator;
 
-public class Jogadores {
+public class Jogador implements Comparable<Jogador>{
 
 	private int gols;
 	private String time;
 	private String nome;
 	
 	
-	public Jogadores(int gols, String time, String nome) {
+	public Jogador(int gols, String time, String nome) {
 		super();
 		this.gols = gols;
 		this.time = time;
@@ -28,6 +28,17 @@ public class Jogadores {
 
 	public Integer getGols() {
 		return gols;
+	}
+
+	@Override
+	public int compareTo(Jogador outroJogador) {
+		if (this.gols < outroJogador.gols) {
+            return -1;
+        }
+        if (this.gols > outroJogador.gols) {
+            return 1;
+        }
+        return 0;
 	}
 
 }

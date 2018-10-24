@@ -38,5 +38,23 @@ public class PortaRetratoDigital implements Controlavel {
 
 	}
 
+	@Override
+	public int mudarCanal(int canalMudado) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int aumentarCanal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int diminuirCanal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

@@ -95,10 +95,10 @@ public class ControleRemotoTest {
 	public void testLigarTablet() {
 		
 		Tablet tablet = new Tablet();
-		Controlavel controlavel = new ControleRemoto(tablet);
+		ControleRemoto controleRemoto = new ControleRemoto(tablet);
 		
-		int volume = controlavel.baixarVolume();
-		assertEquals(true, controlavel.ligar());
+		int volume = controleRemoto.baixarVolume();
+		assertEquals(true, controleRemoto.ligar());
 		
 	}
 	
