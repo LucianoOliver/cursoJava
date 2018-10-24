@@ -1,35 +1,33 @@
 package jogadores;
 
-public class Jogadores  implements Comparable<Jogadores>{
-	
-	
-	private Integer gols;
+import java.util.Comparator;
+
+public class Jogadores {
+
+	private int gols;
 	private String time;
 	private String nome;
 	
-	public Jogadores(String time,  String nome, Integer gols) {
-		
-		this.time = time;
+	
+	public Jogadores(int gols, String time, String nome) {
+		super();
 		this.gols = gols;
+		this.time = time;
 		this.nome = nome;
 	}
 
 	@Override
-	public int compareTo(Jogadores o) {
-		
-		if(gols.equals(o.gols)) {
-			return -1;
-		}else {
-			return 1;
-		}
-		
+	public String toString() {
+		return "nome = " + nome+" time = " + time + ", gols = " + gols + "\n";
 	}
 
-	@Override
-	public String toString() {
-		return "time = " + time + ", gols = " + gols + ", nome = " + nome  + "\n";
+//	@Override
+//	public String toString() {
+//		return "gols = " + gols;
+//	}
+
+	public Integer getGols() {
+		return gols;
 	}
-	
-	
 
 }
