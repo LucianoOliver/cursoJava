@@ -1,6 +1,6 @@
 package br.gov.serpro.tv;
 
-public class Tablet implements Controlavel {
+public class Tablet implements Controlavel, ControlavelVolume {
 	
 	private static final int ZERO = 0;
 	private static final int UM = 1;
@@ -37,24 +37,6 @@ public class Tablet implements Controlavel {
 	public Boolean desligar() {
 		return ligada = false;
 
-	}
-
-	@Override
-	public int mudarCanal(int canalMudado) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int aumentarCanal() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int diminuirCanal() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 

@@ -1,6 +1,6 @@
 package br.gov.serpro.tv;
 
-public interface TvControlavel extends ControlavelCanal, ControlavelVolume, Controlavel {
+public interface ControlavelCanal {
 	
 	public int mudarCanal(int canalMudado);
 	public int aumentarCanal();

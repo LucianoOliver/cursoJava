@@ -2,43 +2,36 @@ package br.gov.serpro.tv;
 
 public class ControleRemoto {
 
-	private Tv tv;
-	private Som som;
-	private Tablet tablet;
-	private PortaRetratoDigital portaRetratoDigital;
-	private Controlavel controlavel;
-
-	public ControleRemoto(Controlavel controlavel) {
-		this.controlavel = controlavel;
+	public ControleRemoto() {
 		
 	}
 
-	public int mudarCanal(int canal) {
-		return controlavel.mudarCanal(canal);
+	public int mudarCanal(ControlavelCanal controlavelCanal, int canal) {
+		return controlavelCanal.mudarCanal(canal);
 
 	}
 
-	public int aumentarCanal() {
-		return controlavel.aumentarCanal();
+	public int aumentarCanal(ControlavelCanal controlavelCanal) {
+		return controlavelCanal.aumentarCanal();
 	}
 
-	public int diminuirCanal() {
-		return controlavel.diminuirCanal();
+	public int diminuirCanal(ControlavelCanal controlavelCanal) {
+		return controlavelCanal.diminuirCanal();
 	}
 
-	public int aumentarVolume() {
-		return controlavel.aumentarVolume();
+	public int aumentarVolume(ControlavelVolume controlavelVolume) {
+		return controlavelVolume.aumentarVolume();
 	}
 
-	public int baixarVolume() {
-		return controlavel.baixarVolume();
+	public int baixarVolume(ControlavelVolume controlavelVolume) {
+		return controlavelVolume.baixarVolume();
 	}
 
-	public Boolean ligar() {
+	public Boolean ligar(Controlavel controlavel) {
 		return controlavel.ligar();
 	}
 
-	public Boolean desligar() {
+	public Boolean desligar(Controlavel controlavel) {
 		return controlavel.desligar();
 	}
 }

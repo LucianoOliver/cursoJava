@@ -13,13 +13,15 @@ public class Principal {
 		jogadores.add(new Jogador(15, "Corinthians", "Neto" ));
 		jogadores.add(new Jogador(1, "santos", "Neymar" ));
 		jogadores.add(new Jogador(10, "Flamengo", "Zico" ));
-		jogadores.add(new Jogador(5, "São paulo", "Raí" ));
+		jogadores.add(new Jogador(5, "Sï¿½o paulo", "Raï¿½" ));
 		jogadores.add(new Jogador(12, "Corinthians", "Tupanzinho" ));
 	
-		Collections.sort(jogadores);
-		Collections.reverse(jogadores);
+		//Collections.sort(jogadores);
+		//Collections.reverse(jogadores);
+		
+		//jogadores.sort((o1, o2) -> o1.compareTo(o2));
 		//Collections.reverseOrder(lista, new JogadoresComparator(15));
-		//Collections.sort(jogadores, Comparator.comparing(Jogador::getGols));
+		Collections.sort(jogadores, Comparator.comparing(Jogador::getGols).reversed());
 
 		for (Jogador jogador : jogadores) {
 			System.out.println(jogador);

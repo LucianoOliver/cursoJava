@@ -33,10 +33,10 @@ public class Jogador implements Comparable<Jogador>{
 	@Override
 	public int compareTo(Jogador outroJogador) {
 		if (this.gols < outroJogador.gols) {
-            return -1;
+            return 1;
         }
         if (this.gols > outroJogador.gols) {
-            return 1;
+            return -1;
         }
         return 0;
 	}

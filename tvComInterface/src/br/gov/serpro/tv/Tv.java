@@ -1,6 +1,6 @@
 package br.gov.serpro.tv;
 
-public class Tv implements TvControlavel{
+public class Tv implements ControlavelCanal, ControlavelVolume, Controlavel{
 
 	private static final int ZERO = 0;
 	private static final int UM = 1;
