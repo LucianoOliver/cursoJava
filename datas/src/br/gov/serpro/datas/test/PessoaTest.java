@@ -14,9 +14,11 @@ public class PessoaTest {
 	private Pessoa luciano;
 	private Pessoa regiane;
 	private Pessoa josefa;
+	private LocalDate dataAtual;
 
 	@Before
 	public void preparar() {
+		dataAtual = LocalDate.of(2049, 9, 12); //LocalDate.now();
 		LocalDate dataNascimentoLuciano = LocalDate.of(1978, 9, 12);
 		LocalDate dataNascimentoRegiane = LocalDate.of(1987, 6, 13);
 		LocalDate dataNascimentoJosefa = LocalDate.of(1950, 11, 20);
@@ -25,12 +27,11 @@ public class PessoaTest {
 		josefa = new Pessoa("Josefa", dataNascimentoJosefa);
 	}
 
-
 	@Test
 	public void deveRetornarAIdadeAPartirDaDataDeNasimento() {
-		assertEquals(40, luciano.getIdade());
-		assertEquals(31, regiane.getIdade());
-		assertEquals(67, josefa.getIdade());	
+		assertEquals(31, regiane.getIdade(dataAtual));
+		assertEquals(40, luciano.getIdade(dataAtual));
+		assertEquals(67, josefa.getIdade(dataAtual));	
 	}
 	
 	@Test
