@@ -1,5 +1,6 @@
 package br.serpro.pilha;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Principal {
@@ -10,11 +11,22 @@ public class Principal {
 			p.empilhar("Eduardo");
 			p.empilhar("Maria");
 			p.empilhar("Jose");
+			List<Object> listaElementos = new ArrayList<>();
+			listaElementos.add("elemento um");
+			listaElementos.add("elemento dois");
+			listaElementos.add("elemento tres");
+			listaElementos.add("elemento quatro");
+			
+			p.adicionarLista(listaElementos);
+			p.adicionarListaAPartirdoIndice(0, listaElementos);
 			
 			
 			System.out.println("Lista: "+p.getElementos());
+			System.out.println("Contem Jose: "+p.Contem("Jose"));
+			System.out.println("Contem Silva: "+p.Contem("Silva"));
+			System.out.println("Pilha esta vazia: "+p.pilhaVazia());
 			System.out.println("topo da Lista: "+p.topo());
-			System.out.println("Qantidade de elentos: "+p.tamanho());
+			System.out.println("Quantidade de elentos: "+p.tamanho());
 			
 			
 			//p.setTopo(6);

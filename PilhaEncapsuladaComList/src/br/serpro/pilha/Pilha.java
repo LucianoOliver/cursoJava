@@ -42,5 +42,25 @@ public class Pilha {
 	public void setElementos(Object elemento) {
 		this.elementos.add(elemento);
 	}
+	
+	public Boolean Contem(Object elemento) {
+		return this.elementos.contains(elemento);
+		
+		
+	}
+	
+	public Boolean pilhaVazia() {
+		return this.elementos.isEmpty();
+	}
+	
+	public Boolean adicionarLista(List<Object>  listaElementos) {
+		return this.elementos.addAll(listaElementos);
+		
+	}
+	
+	public Boolean adicionarListaAPartirdoIndice(int index, List<Object>  listaElementos) {
+		return this.elementos.addAll(index, listaElementos);
+		
+	}
 
 }
