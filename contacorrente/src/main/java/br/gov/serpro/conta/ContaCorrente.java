@@ -14,4 +14,16 @@ public abstract class ContaCorrente {
 		return saldo;
 	}
 
+	public void efetuarRetirada(double valorRetirada) throws SaldoInsuficienteException {
+		
+		if(saldo < 0) {
+			 throw new SaldoInsuficienteException("Saldo insuficiente");
+		}
+		
+		this.saldo = saldo - valorRetirada;
+		
+		
+		
+	}
+
 }
