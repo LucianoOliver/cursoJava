@@ -5,6 +5,8 @@ public abstract class ContaCorrente {
 	
 	protected abstract double calcularTaxaJuros();
 	
+	protected abstract void efetuarRetirada(double valorRetirada) throws SaldoInsuficienteException;
+	
 	public void depositar(double valor) {
 		this.saldo = this.saldo + valor;
 		
@@ -12,18 +14,6 @@ public abstract class ContaCorrente {
 
 	public double obterSaldo() {
 		return saldo;
-	}
-
-	public void efetuarRetirada(double valorRetirada) throws SaldoInsuficienteException {
-		
-		if(saldo < 0) {
-			 throw new SaldoInsuficienteException("Saldo insuficiente");
-		}
-		
-		this.saldo = saldo - valorRetirada;
-		
-		
-		
 	}
 
 }

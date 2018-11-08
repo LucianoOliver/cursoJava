@@ -9,4 +9,10 @@ public class ContaCorrenteRegular extends ContaCorrente {
 		return CINCO_PORCENTO;
 	}
 
+	@Override
+	public void efetuarRetirada(double valorRetirada) throws SaldoInsuficienteException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
