@@ -1,0 +1,5 @@
+br/gov/serpro/caixa24h/CaixaVinteQuatroHoras.class
+br/gov/serpro/caixa24h/exception/SaldoInsuficienteException.class
+br/gov/serpro/banco/Banco.class
+br/gov/serpro/caixa24h/BancoSantander.class
+br/gov/serpro/caixa24h/exception/ContaInexistenteException.class
