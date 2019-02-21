@@ -3,35 +3,40 @@ package br.gov.serpro.caixa24h;
 import java.math.BigDecimal;
 import java.util.List;
 
-import br.gov.serpro.banco.Banco;
+import br.gov.serpro.banco.BancoGeral;
+import br.gov.serpro.banco.Extrato;
+import br.gov.serpro.caixa24h.exception.BancoInexistenteException;
 import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 
 public class CaixaVinteQuatroHoras {
 
-	private Banco banco;
+	private BancoGeral banco;
 
-	public CaixaVinteQuatroHoras(Banco banco) {
+	public CaixaVinteQuatroHoras(BancoGeral banco) throws BancoInexistenteException {
+		if (banco == null) {
+			 throw new BancoInexistenteException("Banco inexistente");
+		}
 		this.banco = banco;
 	}
 
-	public List<String> consultaExtrato(int numeroConta) throws ContaInexistenteException {
+	public List<Extrato> consultaExtrato(int numeroConta) throws ContaInexistenteException {
 		return banco.consultarExtrato(numeroConta);
 	}
 	
-	public BigDecimal consultaSaldo(int numeroConta) throws ContaInexistenteException {
+	public Double consultaSaldo(int numeroConta) throws ContaInexistenteException {
 		return banco.consultarSaldo(numeroConta);
 	}	
 	
-	public Boolean efetuarTransferencia(int contaDestino, BigDecimal valor) throws SaldoInsuficienteException, ContaInexistenteException {
-		return banco.efetuarTransferencia(contaDestino, valor);
+	public void efetuarTransferencia(int numeroConta, int contaDestino, BigDecimal valor) throws SaldoInsuficienteException, ContaInexistenteException {
+		 banco.efetuarTransferencia(numeroConta, contaDestino, valor);
 	}
 
-	public Boolean efetuarDeposito(BigDecimal valor) {
-		return banco.efetuarDeposito(valor);
+	public void efetuarDeposito(int numeroConta, BigDecimal valor) {
+		 banco.efetuarDeposito(numeroConta, valor);
 	}
 
-	public Boolean efetuarSaque(BigDecimal valor) throws SaldoInsuficienteException {
-		return banco.efetuarSaque(valor);
+	public void efetuarSaque(int numeroConta, BigDecimal valor) throws SaldoInsuficienteException {
+		 banco.efetuarSaque(numeroConta, valor);
 	}	
 }
