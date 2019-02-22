@@ -25,8 +25,9 @@ import br.gov.serpro.caixa24h.CaixaVinteQuatroHoras;
 import br.gov.serpro.caixa24h.exception.BancoInexistenteException;
 import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
+import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
-public class CaixaVinteQuatroHorasTest {
+public class CaixaVinteQuatroHorasMockTest {
 
 	BancoGeral bancoMock = Mockito.mock(BancoGeral.class);
 	private int numeroConta;
@@ -43,7 +44,7 @@ public class CaixaVinteQuatroHorasTest {
 	public void deveRetornarUmaConsultaDoExtrato() throws ContaInexistenteException, BancoInexistenteException {
 		//dado
 		LocalDate data = LocalDate.now();
-		extrato = new Extrato(data, 10000, 50000);
+		extrato = new Extrato("", data, 10000, 50000);
 		List<Extrato> listaExtratos = new ArrayList<Extrato>();
 		listaExtratos.add(extrato);
 		Mockito.when(bancoMock.consultarExtrato(numeroConta)).thenReturn(listaExtratos);
@@ -55,7 +56,7 @@ public class CaixaVinteQuatroHorasTest {
 		//entao
 		assertEquals(listaExtratos.get(0).getData(), consultaExtrato.get(0).getData());
 		assertEquals(listaExtratos.get(0).getCredito(), consultaExtrato.get(0).getCredito(), 0);
-		assertEquals(listaExtratos.get(0).getDebito(), consultaExtrato.get(0).getDebito());
+		assertEquals(listaExtratos.get(0).getDebito(), consultaExtrato.get(0).getDebito(), 0);
 		assertEquals(listaExtratos.size(), consultaExtrato.size());
 	}
 
@@ -74,8 +75,8 @@ public class CaixaVinteQuatroHorasTest {
 
 	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarTransferencia()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
-		BigDecimal valorTransferido = new BigDecimal(10000);
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+		Double valorTransferido = 100.00;
 		Mockito.doThrow(SaldoInsuficienteException.class).when(bancoMock).efetuarTransferencia(numeroConta,
 				contaDestino, valorTransferido);
 		bancoMock.efetuarTransferencia(numeroConta, contaDestino, valorTransferido);
@@ -84,8 +85,8 @@ public class CaixaVinteQuatroHorasTest {
 
 	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarSaque()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
-		BigDecimal valorSaque = new BigDecimal(10000);
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+		Double valorSaque = 100.00;
 		Mockito.doThrow(SaldoInsuficienteException.class).when(bancoMock).efetuarSaque(numeroConta, valorSaque);
 		bancoMock.efetuarSaque(numeroConta, valorSaque);
 
@@ -110,23 +111,23 @@ public class CaixaVinteQuatroHorasTest {
 
 	@Test
 	public void deveRetornarSeTransferenciaFoiEfetuadaComSucesso()
-			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException {
-		BigDecimal saldoAntesTransferencia = new BigDecimal(10000);
+			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+		Double saldoAntesTransferencia = 100.00;
 		doNothing().when(bancoMock).efetuarTransferencia(numeroConta, contaDestino, saldoAntesTransferencia);
 		bancoMock.efetuarTransferencia(numeroConta, contaDestino, saldoAntesTransferencia);
 		
 	}
 
 	@Test
-	public void deveRetornarSeDepositoEfetuadoComSucesso() {
-		BigDecimal valorDepositado = new BigDecimal(10000);
+	public void deveRetornarSeDepositoEfetuadoComSucesso() throws br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+		Double valorDepositado = 100.00;
 		doNothing().when(bancoMock).efetuarDeposito(numeroConta, valorDepositado);
 		bancoMock.efetuarDeposito(numeroConta, valorDepositado);
 	}
 
 	@Test
-	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException {
-		BigDecimal valorSaque = new BigDecimal(10000);
+	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+		Double valorSaque = 100.00;
 		doNothing().when(bancoMock).efetuarSaque(numeroConta, valorSaque);
 		bancoMock.efetuarDeposito(numeroConta, valorSaque);
 	}

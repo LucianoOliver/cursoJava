@@ -10,8 +10,8 @@ public class ContaCorrentePremium extends ContaCorrente {
 	
 	private static final double PORCENTAGEM_BONIFICACAO = 1.06;
 	private static final int TAXA_JUROS_CONTA_PREMIUM = 1;
-    private static final double LIMITE_SALDO_PREMIUM = 50.00;
-    List<Extrato> listaExtratos = new ArrayList<Extrato>();
+    private static final double LIMITE_SALDO_PREMIUM = 1000.00;
+    private List<Extrato> listaExtratos = new ArrayList<Extrato>();
 
 
 	@Override
@@ -19,14 +19,14 @@ public class ContaCorrentePremium extends ContaCorrente {
 		
 		//double valorCorrigido = obterValorCorrigido(valor);
 		this.saldo = this.saldo + valor;
-		Extrato extrato = new Extrato(LocalDate.now(), valor, 0);
+		Extrato extrato = new Extrato("Deposito", LocalDate.now(), valor, 0);
 		listaExtratos.add(extrato);
 	}
 	
 	@Override
-	public void efetuarTransferencia(double valor) {
-		this.saldo = this.saldo + valor;
-		Extrato extrato = new Extrato(LocalDate.now(), valor, 0);
+	public void efetuarTransferencia(int numeroConta, int contaDestino, double valor) throws SaldoInsuficienteException {
+		efetuarRetirada(valor);
+		Extrato extrato = new Extrato("Transferencia", LocalDate.now(), 0, valor);
 		listaExtratos.add(extrato);
 	}
 
@@ -44,7 +44,7 @@ public class ContaCorrentePremium extends ContaCorrente {
 	@Override
 	public void efetuarRetirada(double valorRetirada) throws SaldoInsuficienteException {
 		this.saldo = this.saldo - valorRetirada;
-		if(saldo < -LIMITE_SALDO_PREMIUM ) {
+		if(saldo < - LIMITE_SALDO_PREMIUM ) {
 			 throw new SaldoInsuficienteException("Saldo insuficiente");
 		}
 	}
@@ -55,6 +55,4 @@ public class ContaCorrentePremium extends ContaCorrente {
 		return listaExtratos;
 		
 	}
-	
-
 }
