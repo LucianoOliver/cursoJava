@@ -29,15 +29,15 @@ public class CaixaVinteQuatroHoras {
 		return banco.consultarSaldo(numeroConta);
 	}	
 	
-	public void efetuarTransferencia(int numeroConta, int contaDestino, Double valor) throws SaldoInsuficienteException, ContaInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void efetuarTransferencia(int numeroConta, int contaDestino, Double valor) throws SaldoInsuficienteException, ContaInexistenteException, LimiteDeOperacoesExcedidasException {
 		 banco.efetuarTransferencia(numeroConta, contaDestino, valor);
 	}
 
-	public void efetuarDeposito(int numeroConta, Double valor) throws br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void efetuarDeposito(int numeroConta, Double valor) throws SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		 banco.efetuarDeposito(numeroConta, valor);
 	}
 
-	public void efetuarSaque(int numeroConta, Double valor) throws SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void efetuarSaque(int numeroConta, Double valor) throws SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		 banco.efetuarSaque(numeroConta, valor);
 	}	
 }

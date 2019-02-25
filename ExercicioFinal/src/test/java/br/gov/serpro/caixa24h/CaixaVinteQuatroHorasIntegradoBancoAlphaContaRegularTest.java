@@ -48,7 +48,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 	}
 
 	@Test
-	public void deveRetornarUmaConsultaDoExtrato() throws ContaInexistenteException, BancoInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void deveRetornarUmaConsultaDoExtrato() throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		//dado
 		Double valorDeposito = 100.00;
 		LocalDate data = LocalDate.now();
@@ -74,9 +74,9 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 
 	}
 
-	@Test(expected = br.gov.serpro.conta.SaldoInsuficienteException.class)
+	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarTransferencia()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 1100.01;
 		
@@ -86,9 +86,9 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 
 	}
 
-	@Test(expected = br.gov.serpro.conta.SaldoInsuficienteException.class)
+	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarSaque()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
 		Double valorSaque = 1100.01;
 		
@@ -109,7 +109,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 	}
 
 	@Test
-	public void deveRetornarSaldoAoInformarNumeroDaConta() throws ContaInexistenteException, BancoInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void deveRetornarSaldoAoInformarNumeroDaConta() throws ContaInexistenteException, BancoInexistenteException,  LimiteDeOperacoesExcedidasException, SaldoInsuficienteException {
 		Double valorDepositado = 100.00;
 		Double saldoRetornado = 100.00;
 	
@@ -121,7 +121,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 
 	@Test
 	public void deveRetornarSeTransferenciaFoiEfetuadaComSucesso()
-			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 100.00;
 	
@@ -136,7 +136,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 	}
 
 	@Test
-	public void deveRetornarSeDepositoEfetuadoComSucesso() throws br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
+	public void deveRetornarSeDepositoEfetuadoComSucesso() throws  LimiteDeOperacoesExcedidasException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 100.00;
 	
@@ -147,7 +147,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 	}
 
 	@Test
-	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException, BancoInexistenteException, ContaInexistenteException {
+	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException, BancoInexistenteException, ContaInexistenteException {
 		Double valorDepositado = 100.00;
 		Double valorSaque = 50.00;
 	

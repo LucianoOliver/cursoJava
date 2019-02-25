@@ -1,27 +1,18 @@
 package br.gov.serpro.caixa24h;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 
 import br.gov.serpro.banco.BancoGeral;
 import br.gov.serpro.banco.Extrato;
-import br.gov.serpro.caixa24h.CaixaVinteQuatroHoras;
 import br.gov.serpro.caixa24h.exception.BancoInexistenteException;
 import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
@@ -75,7 +66,7 @@ public class CaixaVinteQuatroHorasMockTest {
 
 	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarTransferencia()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		Double valorTransferido = 100.00;
 		Mockito.doThrow(SaldoInsuficienteException.class).when(bancoMock).efetuarTransferencia(numeroConta,
 				contaDestino, valorTransferido);
@@ -85,7 +76,7 @@ public class CaixaVinteQuatroHorasMockTest {
 
 	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarSaque()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		Double valorSaque = 100.00;
 		Mockito.doThrow(SaldoInsuficienteException.class).when(bancoMock).efetuarSaque(numeroConta, valorSaque);
 		bancoMock.efetuarSaque(numeroConta, valorSaque);
@@ -111,7 +102,7 @@ public class CaixaVinteQuatroHorasMockTest {
 
 	@Test
 	public void deveRetornarSeTransferenciaFoiEfetuadaComSucesso()
-			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		Double saldoAntesTransferencia = 100.00;
 		doNothing().when(bancoMock).efetuarTransferencia(numeroConta, contaDestino, saldoAntesTransferencia);
 		bancoMock.efetuarTransferencia(numeroConta, contaDestino, saldoAntesTransferencia);
@@ -119,14 +110,14 @@ public class CaixaVinteQuatroHorasMockTest {
 	}
 
 	@Test
-	public void deveRetornarSeDepositoEfetuadoComSucesso() throws br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void deveRetornarSeDepositoEfetuadoComSucesso() throws SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
 		doNothing().when(bancoMock).efetuarDeposito(numeroConta, valorDepositado);
 		bancoMock.efetuarDeposito(numeroConta, valorDepositado);
 	}
 
 	@Test
-	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		Double valorSaque = 100.00;
 		doNothing().when(bancoMock).efetuarSaque(numeroConta, valorSaque);
 		bancoMock.efetuarDeposito(numeroConta, valorSaque);

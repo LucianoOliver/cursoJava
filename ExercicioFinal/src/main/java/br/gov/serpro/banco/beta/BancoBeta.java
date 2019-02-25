@@ -1,4 +1,4 @@
-package br.gov.serpro.banco.alpha;
+package br.gov.serpro.banco.beta;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,10 +10,10 @@ import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 import br.gov.serpro.conta.ContaCorrente;
 import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
-public class BancoAlpha implements BancoGeral  {
+public class BancoBeta implements BancoGeral  {
 	
 	ContaCorrente conta;
-	public BancoAlpha(ContaCorrente conta) throws ContaInexistenteException {
+	public BancoBeta(ContaCorrente conta) throws ContaInexistenteException {
 		if(conta == null) {
 			throw new ContaInexistenteException("Conta inexistente");
 		}

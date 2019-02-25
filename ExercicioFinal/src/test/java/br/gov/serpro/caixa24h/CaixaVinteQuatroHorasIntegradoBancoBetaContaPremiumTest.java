@@ -1,28 +1,16 @@
 package br.gov.serpro.caixa24h;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doNothing;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 
 import br.gov.serpro.banco.BancoGeral;
 import br.gov.serpro.banco.Extrato;
-import br.gov.serpro.banco.alpha.BancoAlpha;
-import br.gov.serpro.caixa24h.CaixaVinteQuatroHoras;
+import br.gov.serpro.banco.beta.BancoBeta;
 import br.gov.serpro.caixa24h.exception.BancoInexistenteException;
 import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
@@ -30,9 +18,9 @@ import br.gov.serpro.conta.ContaCorrente;
 import br.gov.serpro.conta.ContaCorrentePremium;
 import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
-public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
+public class CaixaVinteQuatroHorasIntegradoBancoBetaContaPremiumTest {
 
-	BancoGeral bancoAlpha;
+	BancoGeral bancoBeta;
 	private int numeroConta;
 	private int contaDestino;
 	private Extrato extrato;
@@ -41,7 +29,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 	@Before
 	public void inicializa() throws ContaInexistenteException {
 		conta = new ContaCorrentePremium();
-		bancoAlpha =  new BancoAlpha(conta);
+		bancoBeta =  new BancoBeta(conta);
 		numeroConta = 123456;
 		contaDestino = 12345678;
 	}
@@ -53,7 +41,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		LocalDate data = LocalDate.now();
 	
 		//quando
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDeposito);
 		List<Extrato> consultaExtrato = caixa24horas.consultaExtrato(123456);
 
@@ -67,8 +55,8 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 	@Test(expected = ContaInexistenteException.class)
 	public void naoDevePermitirNumeroContaInexistenteParaConsultaExtrato()
 			throws ContaInexistenteException, BancoInexistenteException {
-		bancoAlpha =  new BancoAlpha(null);
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		bancoBeta =  new BancoBeta(null);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.consultaExtrato(numeroConta);
 
 	}
@@ -79,7 +67,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 1100.01;
 		
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		caixa24horas.efetuarTransferencia(numeroConta, contaDestino, valorTransferido);
 
@@ -91,7 +79,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		Double valorDepositado = 100.00;
 		Double valorSaque = 1100.01;
 		
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		caixa24horas.efetuarSaque(numeroConta, valorSaque);
 
@@ -100,8 +88,8 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 	@Test(expected = BancoInexistenteException.class)
 	public void deveRetornarExcecaoQuandoInformadoBancoNulo()
 			throws ContaInexistenteException, BancoInexistenteException {
-		bancoAlpha = null;
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		bancoBeta = null;
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.consultaExtrato(numeroConta);
 
 
@@ -112,7 +100,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		Double valorDepositado = 100.00;
 		Double saldoRetornado = 100.00;
 	
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		Double consultaSaldo = caixa24horas.consultaSaldo(numeroConta);
 		assertEquals(saldoRetornado, consultaSaldo);
@@ -124,7 +112,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 100.00;
 	
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		Double consultaSaldo = caixa24horas.consultaSaldo(numeroConta);
 		assertEquals(valorTransferido, consultaSaldo);
@@ -139,7 +127,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 100.00;
 	
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		Double consultaSaldo = caixa24horas.consultaSaldo(numeroConta);
 		assertEquals(valorDepositado, consultaSaldo);
@@ -150,7 +138,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 		Double valorDepositado = 100.00;
 		Double valorSaque = 50.00;
 	
-		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		caixa24horas.efetuarSaque(numeroConta, valorSaque);
 		Double consultaSaldo = caixa24horas.consultaSaldo(numeroConta);

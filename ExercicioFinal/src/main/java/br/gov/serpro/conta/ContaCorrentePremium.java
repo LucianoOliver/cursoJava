@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.serpro.banco.Extrato;
+import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 
 public class ContaCorrentePremium extends ContaCorrente {
 	

@@ -3,6 +3,7 @@ package br.gov.serpro.conta;
 import java.util.List;
 
 import br.gov.serpro.banco.Extrato;
+import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 
 public abstract class ContaCorrente {
 	public int numero;

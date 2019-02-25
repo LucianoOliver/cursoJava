@@ -10,7 +10,7 @@ import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 public interface BancoGeral {
 	 List<Extrato> consultarExtrato(int numeroConta) throws ContaInexistenteException;	
 	 Double consultarSaldo(int numeroConta)throws ContaInexistenteException;	
-	 void efetuarTransferencia(int numeroConta, int contaDestino, Double valor) throws SaldoInsuficienteException, ContaInexistenteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException;;	
-	 void efetuarDeposito(int numeroConta, Double valor) throws br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException;	
-	 void efetuarSaque(int numeroConta, Double valor) throws SaldoInsuficienteException, br.gov.serpro.conta.SaldoInsuficienteException, LimiteDeOperacoesExcedidasException;
+	 void efetuarTransferencia(int numeroConta, int contaDestino, Double valor) throws SaldoInsuficienteException, ContaInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException;;	
+	 void efetuarDeposito(int numeroConta, Double valor) throws SaldoInsuficienteException, LimiteDeOperacoesExcedidasException;	
+	 void efetuarSaque(int numeroConta, Double valor) throws SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException;
 }

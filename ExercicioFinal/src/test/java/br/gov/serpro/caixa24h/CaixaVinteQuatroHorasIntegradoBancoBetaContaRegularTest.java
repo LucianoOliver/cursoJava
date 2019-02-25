@@ -28,9 +28,10 @@ import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 import br.gov.serpro.conta.ContaCorrente;
 import br.gov.serpro.conta.ContaCorrentePremium;
+import br.gov.serpro.conta.ContaCorrenteRegular;
 import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
-public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
+public class CaixaVinteQuatroHorasIntegradoBancoBetaContaRegularTest {
 
 	BancoGeral bancoAlpha;
 	private int numeroConta;
@@ -40,14 +41,14 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 
 	@Before
 	public void inicializa() throws ContaInexistenteException {
-		conta = new ContaCorrentePremium();
+		conta = new ContaCorrenteRegular();
 		bancoAlpha =  new BancoAlpha(conta);
 		numeroConta = 123456;
 		contaDestino = 12345678;
 	}
 
 	@Test
-	public void deveRetornarUmaConsultaDoExtrato() throws ContaInexistenteException, BancoInexistenteException, LimiteDeOperacoesExcedidasException, SaldoInsuficienteException {
+	public void deveRetornarUmaConsultaDoExtrato() throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		//dado
 		Double valorDeposito = 100.00;
 		LocalDate data = LocalDate.now();
@@ -87,7 +88,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 
 	@Test(expected = SaldoInsuficienteException.class)
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarSaque()
-			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
 		Double valorSaque = 1100.01;
 		
@@ -108,7 +109,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 	}
 
 	@Test
-	public void deveRetornarSaldoAoInformarNumeroDaConta() throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void deveRetornarSaldoAoInformarNumeroDaConta() throws ContaInexistenteException, BancoInexistenteException,  LimiteDeOperacoesExcedidasException, SaldoInsuficienteException {
 		Double valorDepositado = 100.00;
 		Double saldoRetornado = 100.00;
 	
@@ -120,7 +121,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 
 	@Test
 	public void deveRetornarSeTransferenciaFoiEfetuadaComSucesso()
-			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+			throws SaldoInsuficienteException, ContaInexistenteException, BancoInexistenteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 100.00;
 	
@@ -135,7 +136,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 	}
 
 	@Test
-	public void deveRetornarSeDepositoEfetuadoComSucesso() throws SaldoInsuficienteException, LimiteDeOperacoesExcedidasException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
+	public void deveRetornarSeDepositoEfetuadoComSucesso() throws  LimiteDeOperacoesExcedidasException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
 		Double valorDepositado = 100.00;
 		Double valorTransferido = 100.00;
 	
@@ -146,7 +147,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest {
 	}
 
 	@Test
-	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException, BancoInexistenteException, ContaInexistenteException {
+	public void deveRetornarSeSaqueEfetuadoComSucesso() throws SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException, BancoInexistenteException, ContaInexistenteException {
 		Double valorDepositado = 100.00;
 		Double valorSaque = 50.00;
 	

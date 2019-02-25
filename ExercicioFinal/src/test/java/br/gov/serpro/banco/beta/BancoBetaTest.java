@@ -1,4 +1,4 @@
-package br.gov.serpro.banco.alpha;
+package br.gov.serpro.banco.beta;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,16 +14,16 @@ import br.gov.serpro.conta.ContaCorrentePremium;
 import br.gov.serpro.conta.ContaCorrenteRegular;
 import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
-public class BancoAlphaTest {
+public class BancoBetaTest {
 
 	@Test
 	public void ConsultaExtratoComUmDepositoContaCorrentePremiotest() throws ContaInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrentePremium();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDeposito = 100.00;
-		alpha.efetuarDeposito(numeroConta, valorDeposito);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDeposito);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
 		
 		assertEquals(valorDeposito, consultarExtrato.get(0).getCredito(), 0);
 		           
@@ -33,12 +33,12 @@ public class BancoAlphaTest {
 	public void ConsultaExtratoComMaisDeUmDepositoCorrentePremiotest() throws ContaInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrentePremium();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 50.00;
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(valorDepositoDois, consultarExtrato.get(1).getCredito(), 0);
 		           
@@ -48,16 +48,16 @@ public class BancoAlphaTest {
 	public void ConsultaExtratoComMaisDeUmDepositoEUmaRetiradaCorrentePremiotest() throws ContaInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrentePremium();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 50.00;
 		Double valorSaque = 50.00;
 		
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		alpha.efetuarSaque(numeroConta, valorSaque);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
-		 Double consultarSaldo = alpha.consultarSaldo(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		beta.efetuarSaque(numeroConta, valorSaque);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
+		 Double consultarSaldo = beta.consultarSaldo(numeroConta);
 		 
 		
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
@@ -72,10 +72,10 @@ public class BancoAlphaTest {
 		ContaCorrente conta = new ContaCorrentePremium();
 		int numeroConta = 1;
 		int numeroContaDestino = 2;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorTransferencia = 100.00;
-		alpha.efetuarTransferencia(numeroConta, numeroContaDestino, valorTransferencia);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroContaDestino);		 
+		beta.efetuarTransferencia(numeroConta, numeroContaDestino, valorTransferencia);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroContaDestino);		 
 		assertEquals(0, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(100, consultarExtrato.get(0).getDebito(), 0);
 		assertEquals("Transferencia", consultarExtrato.get(0).getAcao());          
@@ -85,10 +85,10 @@ public class BancoAlphaTest {
 	public void ConsultaExtratoComUmDepositoContaCorrenteRegulartest() throws ContaInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrenteRegular();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDeposito = 100.00;
-		alpha.efetuarDeposito(numeroConta, valorDeposito);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDeposito);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
 		
 		assertEquals(valorDeposito, consultarExtrato.get(0).getCredito(), 0);
 		           
@@ -98,12 +98,12 @@ public class BancoAlphaTest {
 	public void ConsultaExtratoComMaisDeUmDepositoContaCorrenteRegulartest() throws ContaInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrenteRegular();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 50.00;
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(valorDepositoDois, consultarExtrato.get(1).getCredito(), 0);
 		           
@@ -114,12 +114,12 @@ public class BancoAlphaTest {
 		ContaCorrente conta = new ContaCorrenteRegular();
 		int numeroConta = 1;
 		int numeroContaDestino = 2;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorTransferencia = 100.00;
 		Double valorDeposito = 100.00;
-		alpha.efetuarDeposito(numeroContaDestino, valorDeposito);
-		alpha.efetuarTransferencia(numeroConta, numeroContaDestino, valorTransferencia);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroContaDestino);		 
+		beta.efetuarDeposito(numeroContaDestino, valorDeposito);
+		beta.efetuarTransferencia(numeroConta, numeroContaDestino, valorTransferencia);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroContaDestino);		 
 		assertEquals(100, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(0, consultarExtrato.get(0).getDebito(), 0);
 		assertEquals("Deposito", consultarExtrato.get(0).getAcao());          
@@ -130,15 +130,15 @@ public class BancoAlphaTest {
 	public void ConsultaExtratoComMaisDeUmDepositoEUmaRetiradaContaCorrenteRegulartest() throws ContaInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrenteRegular();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 50.00;
 		Double valorSaque = 50.00;
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		alpha.efetuarSaque(numeroConta, valorSaque);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
-		 Double consultarSaldo = alpha.consultarSaldo(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		beta.efetuarSaque(numeroConta, valorSaque);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
+		 Double consultarSaldo = beta.consultarSaldo(numeroConta);
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(valorDepositoDois, consultarExtrato.get(1).getCredito(), 0);
 		assertEquals("Deposito", consultarExtrato.get(0).getAcao());
@@ -150,16 +150,16 @@ public class BancoAlphaTest {
 	public void DeveRetornarExcecaoQuandoMaisDeTresOperacoesNaContaCorrenteRegulartest() throws ContaInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrenteRegular();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 50.00;
 		Double valorSaque = 50.00;
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		alpha.efetuarSaque(numeroConta, valorSaque);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
-		 Double consultarSaldo = alpha.consultarSaldo(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		beta.efetuarSaque(numeroConta, valorSaque);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
+		 Double consultarSaldo = beta.consultarSaldo(numeroConta);
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(valorDepositoDois, consultarExtrato.get(1).getCredito(), 0);
 		assertEquals("Deposito", consultarExtrato.get(0).getAcao());
@@ -171,16 +171,16 @@ public class BancoAlphaTest {
 	public void DeveRetornarExcecaoQuandoContaInexistenteMaisDeTresOperacoesNaContaCorrenteRegulartest() throws ContaInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = null;
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 50.00;
 		Double valorSaque = 50.00;
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		alpha.efetuarDeposito(numeroConta, valorDepositoDois);
-		alpha.efetuarSaque(numeroConta, valorSaque);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
-		 Double consultarSaldo = alpha.consultarSaldo(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		beta.efetuarDeposito(numeroConta, valorDepositoDois);
+		beta.efetuarSaque(numeroConta, valorSaque);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
+		 Double consultarSaldo = beta.consultarSaldo(numeroConta);
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(valorDepositoDois, consultarExtrato.get(1).getCredito(), 0);
 		assertEquals("Deposito", consultarExtrato.get(0).getAcao());
@@ -192,14 +192,14 @@ public class BancoAlphaTest {
 	public void DeveRetornarExcecaoQuandoSaldoInsuficienteMaisDeTresOperacoesNaContaCorrenteRegulartest() throws ContaInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		ContaCorrente conta = new ContaCorrenteRegular();
 		int numeroConta = 1;
-		BancoAlpha alpha = new BancoAlpha(conta);
+		BancoBeta beta = new BancoBeta(conta);
 		Double valorDepositoUm = 100.00;
 		Double valorDepositoDois = 100.01;
 		Double valorSaque = 100.01;
-		alpha.efetuarDeposito(numeroConta, valorDepositoUm);
-		alpha.efetuarSaque(numeroConta, valorSaque);
-		List<Extrato> consultarExtrato = alpha.consultarExtrato(numeroConta);
-		Double consultarSaldo = alpha.consultarSaldo(numeroConta);
+		beta.efetuarDeposito(numeroConta, valorDepositoUm);
+		beta.efetuarSaque(numeroConta, valorSaque);
+		List<Extrato> consultarExtrato = beta.consultarExtrato(numeroConta);
+		Double consultarSaldo = beta.consultarSaldo(numeroConta);
 		assertEquals(valorDepositoUm, consultarExtrato.get(0).getCredito(), 0);
 		assertEquals(valorDepositoDois, consultarExtrato.get(1).getCredito(), 0);
 		assertEquals("Deposito", consultarExtrato.get(0).getAcao());

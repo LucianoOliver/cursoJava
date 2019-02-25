@@ -1,0 +1,4 @@
+br/gov/serpro/banco/alpha/BancoAlphaTest.class
+br/gov/serpro/caixa24h/CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest.class
+br/gov/serpro/caixa24h/CaixaVinteQuatroHorasMockTest.class
+br/gov/serpro/caixa24h/CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest.class
