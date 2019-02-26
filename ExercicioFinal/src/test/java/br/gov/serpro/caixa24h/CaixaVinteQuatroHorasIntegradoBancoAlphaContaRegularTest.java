@@ -1,34 +1,21 @@
 package br.gov.serpro.caixa24h;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doNothing;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 
 import br.gov.serpro.banco.BancoGeral;
 import br.gov.serpro.banco.Extrato;
 import br.gov.serpro.banco.alpha.BancoAlpha;
-import br.gov.serpro.caixa24h.CaixaVinteQuatroHoras;
 import br.gov.serpro.caixa24h.exception.BancoInexistenteException;
 import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 import br.gov.serpro.conta.ContaCorrente;
-import br.gov.serpro.conta.ContaCorrentePremium;
-import br.gov.serpro.conta.ContaCorrenteRegular;
+import br.gov.serpro.conta.ContaCorrenteComum;
 import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
 public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
@@ -36,12 +23,11 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 	BancoGeral bancoAlpha;
 	private int numeroConta;
 	private int contaDestino;
-	private Extrato extrato;
 	private ContaCorrente conta;
 
 	@Before
 	public void inicializa() throws ContaInexistenteException {
-		conta = new ContaCorrenteRegular();
+		conta = new ContaCorrenteComum();
 		bancoAlpha =  new BancoAlpha(conta);
 		numeroConta = 123456;
 		contaDestino = 12345678;
@@ -78,7 +64,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoAlphaContaRegularTest {
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarTransferencia()
 			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
-		Double valorTransferido = 1100.01;
+		Double valorTransferido = 1200.01;
 		
 		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoAlpha);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
