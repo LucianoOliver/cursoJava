@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" time="0.003" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="br.gov.serpro.banco.beta.BancoBetaTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -62,13 +62,15 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="deveRetornarSeTransferenciaFoiEfetuadaComSucesso" time="0"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="deveRetornarSeSaqueEfetuadoComSucesso" time="0"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="deveRetornarSaldoAoInformarNumeroDaConta" time="0"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="deveRetornarExcecaoQuandoInformadoBancoNulo" time="0.001"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="naoDevePermitirSaldoInsuficienteAoEfetuarSaque" time="0"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="naoDevePermitirSaldoInsuficienteAoEfetuarTransferencia" time="0.001"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="naoDevePermitirNumeroContaInexistenteParaConsultaExtrato" time="0"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="deveRetornarSeDepositoEfetuadoComSucesso" time="0.001"/>
-  <testcase classname="br.gov.serpro.caixa24h.CaixaVinteQuatroHorasIntegradoBancoAlphaContaPremiumTest" name="deveRetornarUmaConsultaDoExtrato" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="DeveRetornarExcecaoQuandoSaldoInsuficienteMaisDeTresOperacoesNaContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="DeveRetornarExcecaoQuandoContaInexistenteMaisDeTresOperacoesNaContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComUmDepositoContaCorrentePremiotest" time="0.002"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="DeveRetornarExcecaoQuandoMaisDeTresOperacoesNaContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComMaisDeUmDepositoEUmaRetiradaContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComMaisDeUmDepositoContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComTransferenciaCorrentePremiotest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComUmDepositoContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComTransferenciaContaCorrenteRegulartest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComMaisDeUmDepositoEUmaRetiradaCorrentePremiotest" time="0"/>
+  <testcase classname="br.gov.serpro.banco.beta.BancoBetaTest" name="ConsultaExtratoComMaisDeUmDepositoCorrentePremiotest" time="0"/>
 </testsuite>
