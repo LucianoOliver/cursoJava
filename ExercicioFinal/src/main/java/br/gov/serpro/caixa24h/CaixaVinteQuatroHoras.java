@@ -1,6 +1,5 @@
 package br.gov.serpro.caixa24h;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import br.gov.serpro.banco.BancoGeral;
@@ -37,7 +36,7 @@ public class CaixaVinteQuatroHoras {
 		 banco.efetuarDeposito(numeroConta, valor);
 	}
 
-	public void efetuarSaque(int numeroConta, Double valor) throws SaldoInsuficienteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+	public void efetuarSaque(int numeroConta, Double valor) throws SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		 banco.efetuarSaque(numeroConta, valor);
 	}	
 }

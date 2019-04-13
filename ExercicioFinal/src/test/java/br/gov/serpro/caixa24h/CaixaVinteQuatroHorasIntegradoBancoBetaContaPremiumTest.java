@@ -15,7 +15,7 @@ import br.gov.serpro.caixa24h.exception.BancoInexistenteException;
 import br.gov.serpro.caixa24h.exception.ContaInexistenteException;
 import br.gov.serpro.caixa24h.exception.SaldoInsuficienteException;
 import br.gov.serpro.conta.ContaCorrente;
-import br.gov.serpro.conta.ContaCorrentePremium;
+import br.gov.serpro.conta.ContaCorrenteEspecial;
 import br.gov.serpro.conta.LimiteDeOperacoesExcedidasException;
 
 public class CaixaVinteQuatroHorasIntegradoBancoBetaContaPremiumTest {
@@ -23,12 +23,11 @@ public class CaixaVinteQuatroHorasIntegradoBancoBetaContaPremiumTest {
 	BancoGeral bancoBeta;
 	private int numeroConta;
 	private int contaDestino;
-	private Extrato extrato;
 	private ContaCorrente conta;
 
 	@Before
 	public void inicializa() throws ContaInexistenteException {
-		conta = new ContaCorrentePremium();
+		conta = new ContaCorrenteEspecial();
 		bancoBeta =  new BancoBeta(conta);
 		numeroConta = 123456;
 		contaDestino = 12345678;
@@ -65,7 +64,7 @@ public class CaixaVinteQuatroHorasIntegradoBancoBetaContaPremiumTest {
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarTransferencia()
 			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException,  LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
-		Double valorTransferido = 1100.01;
+		Double valorTransferido = 5100.01;
 		
 		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
@@ -77,7 +76,19 @@ public class CaixaVinteQuatroHorasIntegradoBancoBetaContaPremiumTest {
 	public void naoDevePermitirSaldoInsuficienteAoEfetuarSaque()
 			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
 		Double valorDepositado = 100.00;
-		Double valorSaque = 1100.01;
+		Double valorSaque = 5100.01;
+		
+		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
+		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
+		caixa24horas.efetuarSaque(numeroConta, valorSaque);
+
+	}
+	
+	@Test
+	public void DevePermitirSaqueNoLimite()
+			throws ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException, LimiteDeOperacoesExcedidasException {
+		Double valorDepositado = 100.00;
+		Double valorSaque = 5100.00;
 		
 		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
@@ -125,8 +136,6 @@ public class CaixaVinteQuatroHorasIntegradoBancoBetaContaPremiumTest {
 	@Test
 	public void deveRetornarSeDepositoEfetuadoComSucesso() throws SaldoInsuficienteException, LimiteDeOperacoesExcedidasException, ContaInexistenteException, BancoInexistenteException, SaldoInsuficienteException {
 		Double valorDepositado = 100.00;
-		Double valorTransferido = 100.00;
-	
 		CaixaVinteQuatroHoras caixa24horas = new CaixaVinteQuatroHoras(bancoBeta);
 		caixa24horas.efetuarDeposito(numeroConta, valorDepositado);
 		Double consultaSaldo = caixa24horas.consultaSaldo(numeroConta);
