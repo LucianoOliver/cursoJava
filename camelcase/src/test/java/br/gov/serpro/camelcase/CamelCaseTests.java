@@ -72,7 +72,6 @@ public class CamelCaseTests {
 	public void dadoUmaPalavraQueIniciaComNumeroDeveRetornarExcecao() {
 		String original = "10Primeiros";
 		List<String> nome = CamelCase.converterCamelCase(original);
-		//assertEquals("recupera, 10, Primeiros", nome.get(0));
 		
 	}
 	 
@@ -80,7 +79,6 @@ public class CamelCaseTests {
 		public void dadoUmaPalavraComCaracterEspecialDeveRetornarExcecao() {
 			String original = "nome#Composto";
 			List<String> nome = CamelCase.converterCamelCase(original);
-			//assertEquals("recupera, 10, Primeiros", nome.get(0));
 	 }		
 	
 }

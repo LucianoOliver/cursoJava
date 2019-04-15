@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CamelCase {
-
-	//private static final List<String> nomes = new ArrayList<String>();
-
 	public static List<String> converterCamelCase(String nome) {
 		List<String> nomes = new ArrayList<String>();
 		if(cotemCaracterEspecial(nome, nome.length())) {
